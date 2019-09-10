@@ -14,6 +14,10 @@ namespace Medix.Dominio.Entidades
 
         public override void Validate()
         {         
+            if (string.IsNullOrEmpty(Nome))
+            {
+                AdicionaMensagem("Nome do paciente nao pode ser vazio");
+            }
         }
     }
 }
