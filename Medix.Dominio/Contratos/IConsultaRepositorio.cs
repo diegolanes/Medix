@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Medix.Dominio.Contratos
 {
-    interface IConsultaRepositorio : IBaseRepositorio<Consulta>
+    public interface IConsultaRepositorio : IBaseRepositorio<Consulta>
     {
     }
 }

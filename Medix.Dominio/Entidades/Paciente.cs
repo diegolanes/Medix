@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Medix.Dominio.Entidades
 {
-    class Paciente : Entidade
+    public class Paciente : Entidade
     {
         public int Id { get; set; }
 

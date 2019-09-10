@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Medix.Dominio.Contratos
 {
-    interface IPacienteRepositorio : IBaseRepositorio<Paciente>
+    public interface IPacienteRepositorio : IBaseRepositorio<Paciente>
     {
 
     }
