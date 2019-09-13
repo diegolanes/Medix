@@ -13,6 +13,7 @@ namespace Medix.Dominio.Entidades
         public DateTime DataFimConsulta { get; set; }
 
         public int PacienteId { get; set; }
+        public virtual Paciente Paciente { get; set; }
 
         public override void Validate()
         {

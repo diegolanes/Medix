@@ -15,7 +15,7 @@ namespace Medix.Web
         public Startup(IConfiguration configuration)
         {
             var builder = new ConfigurationBuilder();
-            builder.AddJsonFile("config.jason", optional: false, reloadOnChange: true);
+            builder.AddJsonFile("config.json", optional: false, reloadOnChange: true);
 
             Configuration = builder.Build();
         }
@@ -29,7 +29,7 @@ namespace Medix.Web
 
             var connectionString = Configuration.GetConnectionString("MedixDb");
 
-            services.AddDbContext<MedixContexto>(option => option.UseSqlServer(connectionString,m => m.MigrationsAssembly("Medix.Repositorio")));
+            services.AddDbContext<MedixContexto>(option => option.UseLazyLoadingProxies().UseMySql(connectionString,m => m.MigrationsAssembly("Medix.Repositorio")));
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

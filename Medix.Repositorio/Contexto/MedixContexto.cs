@@ -20,11 +20,11 @@ namespace Medix.Repositorio.Contexto
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+     /*  protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PacienteConfiguracao());
             modelBuilder.ApplyConfiguration(new ConsultaConfiguracao());
             base.OnModelCreating(modelBuilder);
-        }
+        }*/
     }
 }
