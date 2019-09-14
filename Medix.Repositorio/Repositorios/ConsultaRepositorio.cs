@@ -1,41 +1,18 @@
 ﻿using Medix.Dominio.Contratos;
 using Medix.Dominio.Entidades;
+using Medix.Repositorio.Contexto;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Medix.Repositorio.Repositorios
 {
-    class ConsultaRepositorio : IBaseRepositorio<Consulta>, IConsultaRepositorio
+    public class ConsultaRepositorio : BaseRepositorio<Consulta>, IConsultaRepositorio
     {
-        public void Adicionar(Consulta entity)
+        public ConsultaRepositorio(MedixContexto medixContexto) : base(medixContexto)
         {
-            throw new NotImplementedException();
+
         }
 
-        public void Atualizar(Consulta entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Consulta ObterPorId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Consulta> ObterTodos()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remover(Consulta entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -1,4 +1,6 @@
+using Medix.Dominio.Contratos;
 using Medix.Repositorio.Contexto;
+using Medix.Repositorio.Repositorios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +32,10 @@ namespace Medix.Web
             var connectionString = Configuration.GetConnectionString("MedixDb");
 
             services.AddDbContext<MedixContexto>(option => option.UseLazyLoadingProxies().UseMySql(connectionString,m => m.MigrationsAssembly("Medix.Repositorio")));
+
+
+            services.AddScoped<IConsultaRepositorio, ConsultaRepositorio>();
+            services.AddScoped<IPacienteRepositorio, PacienteRepositorio>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
