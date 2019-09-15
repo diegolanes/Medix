@@ -1,5 +1,5 @@
 {
   "ConnectionStrings": {
-    "MedixDb": "server=localhost;uid=root;pwd=admin;database=MedixDb"
+    "MedixDb": "server=localhost; uid=root; pwd=; database=MedixDb"
   }
 }
