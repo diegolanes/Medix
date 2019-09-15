@@ -11,7 +11,8 @@ namespace Medix.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<Consulta> builder)
         {
-            builder.HasKey(c => c.Id);
+            builder
+                    .HasKey(c => c.Id);
 
             builder
                     .Property(c => c.DataInicioConsulta)
@@ -22,11 +23,14 @@ namespace Medix.Repositorio.Config
                     .Property(c => c.DataFimConsulta)
                     .IsRequired()
                     .HasColumnType("smalldatetime");
+            builder
+                    .Property(p => p.NomePaciente)
+                    .IsRequired();
 
             builder
-                    .Property(c => c.PacienteId)
+                    .Property(p => p.DataNascimentoPaciente)
                     .IsRequired()
-                    .HasColumnType("bigint");
+                    .HasColumnType("smalldatetime");
         }
     }
 }

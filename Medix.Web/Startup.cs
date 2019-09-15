@@ -27,15 +27,21 @@ namespace Medix.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                    .AddMvc()
+                    .AddJsonOptions(jsonOptions =>
+                    {
+                        jsonOptions.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                    });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             var connectionString = Configuration.GetConnectionString("MedixDb");
 
-            services.AddDbContext<MedixContexto>(option => option.UseLazyLoadingProxies().UseMySql(connectionString,m => m.MigrationsAssembly("Medix.Repositorio")));
+            services.AddDbContext<MedixContexto>(option => option.UseLazyLoadingProxies().UseSqlServer(connectionString, m => m.MigrationsAssembly("Medix.Repositorio")));
 
 
             services.AddScoped<IConsultaRepositorio, ConsultaRepositorio>();
-            services.AddScoped<IPacienteRepositorio, PacienteRepositorio>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

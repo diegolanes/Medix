@@ -4,14 +4,16 @@ using Medix.Repositorio.Contexto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Medix.Repositorio.Migrations
 {
     [DbContext(typeof(MedixContexto))]
-    partial class MedixContextoModelSnapshot : ModelSnapshot
+    [Migration("20190915184853_TrocaDeModeloDeDados")]
+    partial class TrocaDeModeloDeDados
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -11,9 +11,6 @@ namespace Medix.Repositorio.Contexto
     public class MedixContexto : DbContext
     {
 
-
-        public DbSet<Paciente> Pacientes { get; set; }
-
         public DbSet<Consulta> Consultas { get; set; }
 
         public MedixContexto( DbContextOptions options) : base(options)
