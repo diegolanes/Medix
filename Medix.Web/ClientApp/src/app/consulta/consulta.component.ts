@@ -1,18 +1,38 @@
-import { Component } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
+import { Consulta } from "../model/Consulta"
+import { ConsultaServico } from "../servicos/consulta/consulta.servico";
 
 @Component({
   selector: "app-consulta",
-  template: "<html><body>{{ obterDataInicioConsulta() }}</body></html>"
+  templateUrl: "./consulta.component.html",
+  styleUrls : ["./consulta.component.css"]
 })
-export class ConsultaComponent {
+export class ConsultaComponent implements OnInit {
 
-  public DataInicioConsulta: Date;
-  public DataFimConsulta: Date;
-  public NomePaciente: string;
-  public DataNascimentoPaciente: Date;
+  public consulta: Consulta
+constructor(private consultaServico: ConsultaServico)
+{
 
-  public obterDataInicioConsulta(): Date {
-    return new Date();
+}
+
+
+
+
+  ngOnInit(): void {
+    throw new Error("Method not implemented.");
   }
 
+  public cadastrar() {
+
+    //this.consulta
+    this.consultaServico.cadastrar(this.consulta)
+      .subscribe(
+        consultaJson => {
+          console.log(consultaJson)
+        },
+        e => {
+          console.log(e.error)
+        }
+      );
+  }
 }

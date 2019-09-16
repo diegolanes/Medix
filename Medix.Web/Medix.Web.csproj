@@ -26,6 +26,8 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\consulta\consulta.component.ts" />
+    <None Remove="ClientApp\src\app\model\Consulta.ts" />
+    <None Remove="ClientApp\src\app\servicos\consulta\consulta.servico.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +36,8 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\consulta\consulta.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\Consulta.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\servicos\consulta\consulta.servico.ts" />
   </ItemGroup>
 
   <ItemGroup>
