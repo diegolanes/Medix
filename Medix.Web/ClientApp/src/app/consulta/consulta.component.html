@@ -1,6 +1,70 @@
-<div class="text-center">
-  <form class="">
-    <h1 class="h4">Consultas</h1>
+<h1 class="h4">Cadastro de Consultas</h1>
+<label for="inputDataInicioConsulta" class="sr-only">Data e Hora Inicio</label>
+<input type="datetime-local" id="inputDataInicioConsulta"
+       name="inputDataInicioConsulta"
+       placeholder="Data e Hora Inicio"
+       class="form-control mb-2 col-md-4"
+       [ngClass]=""
+       [(ngModel)]="consulta.datainicioconsulta"
+       #datainicioconsulta="ngModel"
+       required/>
 
-  </form>
+<input type="datetime-local" id="inputDataFimConsulta"
+       name="inputDataFimConsulta"
+       placeholder="Data e Hora Fim"
+       class="form-control mb-2 col-md-4"
+       [ngClass]=""
+       [(ngModel)]="consulta.datafimconsulta"
+       #datafimconsulta="ngModel"
+       required />
+
+
+<input type="text" id="inputNomePaciente"
+       name="inputNomePaciente"
+       placeholder="Nome do Paciente"
+       class="form-control mb-2 col-md-4"
+       [ngClass]=""
+       [(ngModel)]="consulta.nomepaciente"
+       #nomepaciente="ngModel"
+       required />
+
+<input type="date" id="inputDataAniversarioPaciente"
+       name="inputDataAniversarioPaciente"
+       placeholder="Data de aniversario paciente"
+       class="form-control mb-2 col-md-4"
+       [ngClass]=""
+       [(ngModel)]="consulta.dataaniversariopaciente"
+       #dataaniversariopaciente="ngModel"
+        />
+<button class="btn btn-primary mb-4" (click)="cadastrar()" >
+  Cadastrar
+</button>
+
+<div class="alert alert-danger col-md-4" *ngIf="mensagem">
+  {{mensagem}}
+</div>
+
+<div>
+  <h1 class="h4"> Consultas</h1>
+
+
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Data Inicio</th>
+        <th>Data Fim</th>
+        <th>Paciente</th>
+        <th>Data Nascimento Paciente</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let consulta of consultas">
+        <td>{{ consulta.datainicioconsulta }}</td>
+        <td>{{ consulta.datafimconsulta }}</td>
+        <td>{{ consulta.nomepaciente }}</td>
+        <td>{{ consulta.dataaniversariopaciente }}</td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>

@@ -10,16 +10,16 @@ import { ConsultaServico } from "../servicos/consulta/consulta.servico";
 export class ConsultaComponent implements OnInit {
 
   public consulta: Consulta
+  public mensagem: string;
+  public consultas: Consulta[];
 constructor(private consultaServico: ConsultaServico)
 {
 
 }
 
 
-
-
   ngOnInit(): void {
-    throw new Error("Method not implemented.");
+    this.consulta = new Consulta();
   }
 
   public cadastrar() {
@@ -32,7 +32,20 @@ constructor(private consultaServico: ConsultaServico)
         },
         e => {
           console.log(e.error)
+          this.mensagem = e.error          
         }
       );
   }
+  public mostrar() {
+    this.consultaServico.obterTodasConsultas()
+      .subscribe(result => {
+        this.consultas = result;
+        console.log(result);
+      },
+        e => {
+          console.log(e.error)
+        }
+      );
+  }
+
 }

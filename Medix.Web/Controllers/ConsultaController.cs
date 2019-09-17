@@ -35,7 +35,16 @@ namespace Medix.Web.Controllers
         {
             try
             {
+                consulta.Validate();
+                consulta.RegraDeNegocio(_consultaRepositorio.ObterTodos(), consulta);
+
+                if (!consulta.Valido)
+                {
+                    return BadRequest(consulta.ObterMensagensValidacao());
+                }
+                
                 _consultaRepositorio.Adicionar(consulta);
+
                 return Created("api/consulta", consulta);
             }
             catch (Exception ex)

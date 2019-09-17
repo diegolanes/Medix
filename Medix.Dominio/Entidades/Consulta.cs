@@ -18,10 +18,35 @@ namespace Medix.Dominio.Entidades
 
         public override void Validate()
         {
-            if (DataInicioConsulta < DateTime.Now)
+            if ((DataInicioConsulta.TimeOfDay < DateTime.Now.TimeOfDay) || (DataFimConsulta.TimeOfDay < DateTime.Now.TimeOfDay))
             {
                 AdicionaMensagem("Consulta deve ser marcada em um horário maior que o atual");
             }
+            if (DataFimConsulta < DataInicioConsulta)
+            {
+                AdicionaMensagem("A data do final da consulta nao pode ser menor que a data de inicio");
+            }
+
+            if (String.IsNullOrEmpty(NomePaciente))
+            {
+                AdicionaMensagem("Nome do Paciente nao pode ser vazio");
+            }
         }
+
+        public override void RegraDeNegocio(IEnumerable<Consulta> consultas, Consulta consulta)
+        {
+
+            foreach (var c in consultas)
+            {
+                if (c.DataInicioConsulta.TimeOfDay == consulta.DataInicioConsulta.TimeOfDay)
+                {
+                    AdicionaMensagem("Consultas nao podem ser marcadas no mesmo horário");
+                }             
+
+            }
+
+        }
+
+
     }
 }

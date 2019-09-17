@@ -9,7 +9,7 @@ import { Consulta } from "../../model/Consulta";
 
 export class ConsultaServico implements OnInit{
 
-  private _baseUrl
+  private _baseUrl: string;
   public consultas: Consulta[]
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this._baseUrl = baseUrl;
@@ -21,12 +21,12 @@ export class ConsultaServico implements OnInit{
   }
 
   get headers(): HttpHeaders {
-    return new HttpHeaders().set('content-type', 'application/jason')
+    return new HttpHeaders().set('content-type', 'application/json')
   }
 
   public cadastrar(consulta: Consulta): Observable<Consulta> {
 
-    return this.http.post<Consulta>(this._baseUrl + "api/consulta/cadastrar", JSON.stringify(consulta),{ headers: this.headers })
+    return this.http.post<Consulta>(this._baseUrl + "api/consulta", JSON.stringify(consulta),{ headers: this.headers })
   }
 
   public salvar(consulta: Consulta): Observable<Consulta> {
